@@ -15,6 +15,7 @@
     <link href="assets/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/pages/css/signin.css" rel="stylesheet">
     <link href="assets/pages/css/headers.css" rel="stylesheet">
+    
     <!-- Sign in -->
     <style>
       .bd-placeholder-img {
@@ -29,6 +30,17 @@
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
+      }
+
+      .button_ya{
+        background: red;
+        margin-top:10px;
+        text-decoration: none;
+      }
+
+      .button_ya:hover {
+        background: #960000;
+        
       }
     </style>
     <!-- header -->

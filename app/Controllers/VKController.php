@@ -3,18 +3,18 @@
 namespace App\Controllers;
 
 //подключаю модель в которой работает логика с бд
-use App\Models\TestModel;
+use App\Models\YandexModel;
 use App\Services\Router;
 use App\Services\View;
 
-class TestController 
+class VKController 
 {
     
     public static function register(){   
 
         //TestModel::update();
         //TestModel::delete();
-        TestModel::index();
+        //TestModel::index();
         //TestModel::store();
         //$model = new TestModel;
         //$model->register();
@@ -22,10 +22,9 @@ class TestController
         
     }
 
-    public static function test(){
+    public static function vk_login(){
 
-        echo 'test';
-        
+        echo 'vk_login';
     }
 }
 

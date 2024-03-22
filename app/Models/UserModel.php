@@ -29,29 +29,40 @@ class UserModel{
         $fileName = time()."_".$file;
 
         $fileName2 = $file2;
-        
-        if (move_uploaded_file($temp_name_file, $GLOBALS['avatar_way'].$fileName )){
 
-            $user = \R::dispense('user');
-            $user->email = $email;
-            $user->username = $username;
-            $user->password = password_hash($password,PASSWORD_DEFAULT);
-            $user->avatar = $fileName;
-            $user->group = $group;
-            // Сохраняем объект
-            \R::store($user);
+        $user = \R::findOne('user', 'email = ?', [$email]);
 
+        if (empty($user)){
+
+            if (move_uploaded_file($temp_name_file, $GLOBALS['avatar_way'].$fileName )){
+
+                $user = \R::dispense('user');
+                $user->email = $email;
+                $user->username = $username;
+                $user->password = password_hash($password,PASSWORD_DEFAULT);
+                $user->avatar = $fileName;
+                $user->group = $group;
+                // Сохраняем объект
+                \R::store($user);
+    
+            }else{
+    
+                $user = \R::dispense('user');
+                $user->email = $email;
+                $user->username = $username;
+                $user->password = password_hash($password,PASSWORD_DEFAULT);
+                $user->avatar = $fileName2;
+                $user->group = $group;
+                // Сохраняем объект
+                \R::store($user);
+            }
+            
         }else{
-
-            $user = \R::dispense('user');
-            $user->email = $email;
-            $user->username = $username;
-            $user->password = password_hash($password,PASSWORD_DEFAULT);
-            $user->avatar = $fileName2;
-            $user->group = $group;
-            // Сохраняем объект
-            \R::store($user);
+            echo 'Пользователь уже существует';
+            die();
         }
+        
+
 
     }
 

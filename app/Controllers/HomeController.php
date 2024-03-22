@@ -24,7 +24,16 @@ class HomeController
         Router::redirect_run('home');
     }
 
+    public static function secuerity(){
+        View::run('','secuerity', null);
+    }
 
+    public static function secuerity_online(){
+        View::run('','secuerity_online', null);
+    }
+
+
+    
 }
 
 

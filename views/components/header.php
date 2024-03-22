@@ -6,6 +6,7 @@
             </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="/home" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="/ex_content" class="nav-link px-2 text-secondary">Эксклюзивный контент для разных групп</a></li>
                 </ul>
             <div class="text-end">
             <?php

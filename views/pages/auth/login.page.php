@@ -10,6 +10,16 @@
     <?php 
         Page::part('head');
     ?>
+    <?php 
+        $params = array(
+            'client_id'     => '1eec5e03e6594d22a9b4d1aa89426774',
+            'redirect_uri'  => 'http://localhost:8000/ya_login',
+            'response_type' => 'code',
+            'state'         => '123'
+        );
+         
+        $url = 'https://oauth.yandex.ru/authorize?' . urldecode(http_build_query($params));
+    ?>
     <body class="text-center">
             <!--header-->
             <?php 
@@ -27,12 +37,17 @@
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" >Sign in</button>
+                <button type="button" onclick="document.location='<?php echo $url; ?>'" class="button_ya w-100 btn btn-lg" style=" " >
+                    <img src="assets/yandex/butten/butten.svg" width="36" height="36" alt="Яндекс svg">
+                    <span class="content" style="color: white">
+                        Войти с Яндекс ID
+                    </span>
+                </button>
             </form>
             </main>
             <!--footer-->
@@ -40,4 +55,5 @@
                 Page::part('footer');
             ?>
     </body>
+    
 </html>

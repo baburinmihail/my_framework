@@ -31,16 +31,38 @@ class Router
 
     public static function enable(){
 
+        
         //получаю урл с глобального параметра и вписываю подключение
         //представлений через цикл
-        $query = $_SERVER['REQUEST_URI'];
+        //$query = $_SERVER['REQUEST_URI'];
+
+
+        if (empty($_GET)){
+
+            $query = $_SERVER['REQUEST_URI'];
+  
+        }else{
+
+            $url_sring = explode("?", $_SERVER['REQUEST_URI']);
+            
+            $query= $url_sring[0];
+            $get_data = $_GET;
+
+            
+        }
+
+
+        //http://localhost:8000/test?state=123&code=2712736
+        //
+
+
+        
 
         foreach (self::$list as $page_list){
             if ($page_list["uri"] === $query){
 
                 $controlerName = $page_list["classes"];
                 $controlerMethode = $page_list["methode"];
-             
 
                 if ($_SERVER["REQUEST_METHOD"] === "POST"){
                     
@@ -49,10 +71,25 @@ class Router
                     die();
 
                 }else{
-    
-                    $kontroller = new Controller;
-                    $kontroller->get($controlerName, $controlerMethode);
-                    die();
+                    if (empty($get_data)){
+
+                        //echo 'без гет данных';
+                        
+                        $kontroller = new Controller;
+                        $kontroller->get($controlerName, $controlerMethode);
+                        die();
+
+                    }else{
+
+                        //echo 'c гет данными';
+                        
+                        $kontroller = new Controller;
+                        $kontroller->get_data($controlerName, $controlerMethode , $get_data);
+                        die();
+
+     
+                    }
+
                 }
 
             }
