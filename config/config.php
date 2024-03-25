@@ -11,6 +11,7 @@ $GLOBALS['password'] = "1qaz!QAZ";
 
 //путь сохранение аватарок базы в фреймворк
 $GLOBALS['avatar_way'] = "assets".DIRECTORY_SEPARATOR."avatars".DIRECTORY_SEPARATOR;
+define('avatar_place', "assets".DIRECTORY_SEPARATOR."avatars".DIRECTORY_SEPARATOR);
 //путь открытия файла аватарки в html 
 $GLOBALS['avatar_way_html'] = "/assets/avatars/";
 //путь сохранение аватарок базы в фреймворк
@@ -22,6 +23,7 @@ $GLOBALS['type'] = ['image/jpg' , 'image/png' , 'image/jpeg'];
 
 $GLOBALS['uri'] = "http://localhost:8000/";
 
+define('CONROLLERS_PLACE', "App".DIRECTORY_SEPARATOR."Controllers".DIRECTORY_SEPARATOR);
 
 
 

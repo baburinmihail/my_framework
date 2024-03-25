@@ -39,6 +39,12 @@ class LoginController
         UserModel::exit();
     }
 
+    public static function no_auth(){
+        View::run('auth','no_auth', null);
+    }
+
+    
+
 }
 
 

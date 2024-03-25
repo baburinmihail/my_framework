@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Services\Router;
+use App\Models\LogeModel;
 
 class YandexModel{
 
@@ -70,7 +71,10 @@ class YandexModel{
 
             }
         }else{
-            echo 'Ошибка авторизации через яндекс';
+
+            LogeModel::yandex_auth_log();
+            Router::redirect_run('no_auth');
+            //echo 'Ошибка авторизации через яндекс';
             die();
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Services\Router;
+use App\Models\LogeModel;
 
 class UserModel{
 
@@ -75,7 +76,8 @@ class UserModel{
         $user = \R::findOne('user', 'email = ?' , [$email]);
 
         if (!$user){
-            die('Неверный логин');
+            Router::redirect_run('no_auth');
+            die();
         }
         
         //проверка хешированного пароля
@@ -93,7 +95,11 @@ class UserModel{
             Router::redirect_run('home');
 
         }else{
-            die('не верный пароль');
+
+            LogeModel::auth_log($data);
+            Router::redirect_run('no_auth');
+            die();
+            //die('не верный пароль');
         }
 
     }

@@ -1,7 +1,9 @@
 <?php
     use App\Services\Page;
     use App\Services\Router;
-    
+
+   
+   
     //if (!$_SESSION['username']){
     //        Router::redirect_run('login');
     //}
@@ -46,7 +48,20 @@
                                 </a>
                                     <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src='<?php echo $GLOBALS['avatar_way_html'].$paints['avatar'] ?>' alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                        <?php
+                                            $str = $paints['avatar'];
+                                            $first_characters = mb_substr($str, 0, 4);
+
+                                            if ( $first_characters === 'http'){
+                                                ?>
+                                                    <img src='<?php echo $paints['avatar'] ?>'  width="32" height="32" class="rounded-circle border border-white">
+                                                <?php 
+                                            }else{
+                                                ?>
+                                                    <img src='<?php echo $GLOBALS['avatar_way_html'].$paints['avatar'] ?>'  width="32" height="32" class="rounded-circle border border-white">
+                                                <?php 
+                                            }
+                                        ?>
                                     </li>
                                     <li class="d-flex align-items-center me-3">
                                         <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
@@ -63,13 +78,13 @@
                                             <input style="display: none" type="text" class="form-control" name="username_paint" id="username_paint" value="<?php echo $_SESSION["username"] ?>">
                                             <input style="display: none" type="text" class="form-control" name="avatar_paint" id="avatar_paint" value="<?php echo $_SESSION["avatar"] ?>">
                                             <input style="display: none" type="text" class="form-control" name="paintName" id="paintName" value="<?php echo $paints['paint'] ?>">
-                                            <small><button type="submit"  class="btn btn-success me-2">Добавить коментарий</button> </small>
+                                            <small><button type="submit"  class="btn btn-success me-2">add</button> </small>
                                         </form>
                                         <form action="/paint_delite"  method="post">
                                             <input style="display: none" type="text" class="form-control" name="username_del_now" id="username_del_now" value="<?php echo $_SESSION["username"] ?>">
                                             <input style="display: none" type="text" class="form-control" name="username_paint_del" id="username_paint_del" value="<?php echo $paints['username'] ?>">
                                             <input style="display: none" type="text" class="form-control" name="id_paint_del" id="id_paint_del" value="<?php echo $paints['id'] ?>">
-                                            <small><button type="submit" style="height: 63px;"  class="btn btn-danger me-2">Удалить</button> </small>
+                                            <small><button type="submit" style="height: 38px;"  class="btn btn-danger me-2">delite</button> </small>
                                         </form>
                                         <?php
                                             }else{

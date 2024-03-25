@@ -16,6 +16,7 @@ Router::page('/login_try', 'LoginController','login_try');
 Router::page('/register', 'LoginController','register');
 Router::page('/register_try', 'LoginController','register_try');
 Router::page('/exit', 'LoginController','exit');
+Router::page('/no_auth', 'LoginController','no_auth');
 
 
 Router::page('/paint_form', 'PaintController','paint_form');
@@ -40,7 +41,7 @@ Router::page('/ex_content', 'ContentController','ex_content');
 Router::page('/test', 'TestController','test');
 Router::page('/test2', 'TestController','register');
 
-
+//no_auth
 
 Router::enable();
 

@@ -39,7 +39,20 @@
                             <?php foreach ($masiv as $coments){  ?>
                             <!--coment-->    
                             <tr>
-                                <td><img src='<?php echo $GLOBALS['avatar_way_html'].$coments['avatar_paint'] ?>' alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white"></td>
+                            <?php
+                                $str = $coments['avatar_paint'];
+                                $first_characters = mb_substr($str, 0, 4);
+                                    if ( $first_characters === 'http'){
+                                        ?>
+                                            <td><img src='<?php echo $coments['avatar_paint'] ?>' alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white"></td>
+                                        <?php 
+                                    }else{
+                                        ?>
+                                            <td><img src='<?php echo $GLOBALS['avatar_way_html'].$coments['avatar_paint'] ?>' alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white"></td>
+                                        <?php 
+                                    }
+                            ?>
+                                
                                 <td><?php echo $coments['username_paint'] ?>"</td>
                                 <td><?php echo $coments['mycoments'] ?>"</td>
                                 <td><?php echo $coments['time_user'] ?>"</td>

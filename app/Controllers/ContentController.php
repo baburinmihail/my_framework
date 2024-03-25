@@ -13,9 +13,10 @@ class ContentController
 
     public static function ex_content(){
 
-        //ContentModel::ex_content();
-        View::run('group_content','user_con', null);
-        
+        $resualt = ContentModel::ex_content();
+        //View::run('group_content','no_con', null);
+        View::run('group_content','content' , $resualt);
+
     }
 }
 
